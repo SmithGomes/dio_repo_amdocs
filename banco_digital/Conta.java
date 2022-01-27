@@ -3,18 +3,25 @@ import java.util.Scanner;
 public abstract class Conta implements IConta {
 	
 	private static final int AGENCIA_PADRAO = 1;
+	//private static int CONTAS = 1;
 	//private static int SEQUENCIAL = 1;
 
-	protected int agencia;
-	protected String numero;
-	protected double saldo;
-	protected Cliente cliente;
+	
 
-	public Conta(Cliente cliente) {
-		this.agencia = AGENCIA_PADRAO;
-		this.numero = getHash();
-		this.cliente = cliente;
+	private int agencia;
+	private String numero;
+	private double saldo;
+	private Cliente cliente;
+
+	public Conta(Cliente novoCliente) {
+		agencia = AGENCIA_PADRAO;
+		numero = getHash();
+		saldo = 0.0;
+		cliente = novoCliente;
+		cliente.setQuantidadeContas( 1 );
+		cliente.setContas( this );
 	}
+
 
 	
 	public String getHash(){
@@ -47,13 +54,13 @@ public abstract class Conta implements IConta {
 			System.out.println( "\nTRANSFERÊNCIA PARA OUTRO BANCO" );
 			System.out.printf( " Na conta = %.2f%n Taxa = %.2f%n Total = %.2f%n", getSaldo(), tax, total   );
 			
-			promptTranfer( valor, total, contaDestino );
+			promptTransferir( valor, total, contaDestino );
 		}else{
-			promptTranfer( valor, total, contaDestino );
+			promptTransferir( valor, total, contaDestino );
 		}
 	}
 
-	public void promptTranfer( double valor, double total, Conta contaDestino ){
+	public void promptTransferir( double valor, double total, Conta contaDestino ){
 		if( getSaldo() < total ){
 			System.out.println( "SALDO INSUFICIENTE" );
 		}else{
