@@ -31,6 +31,10 @@ public class Person {
 
     private LocalDate birthDate;
 
+<<<<<<< HEAD
     @OneToMany( fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE } )
+=======
+    @OneToMany( fetch = FetchType.LAZY,cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE } )
+>>>>>>> ba063472e671336ffa8fb593d7e5bb938abfac50
     private List<Phone> phones;
 }

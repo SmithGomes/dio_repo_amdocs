@@ -1,5 +1,6 @@
 package one.digitalinnovation.personapi.controller;
 
+<<<<<<< HEAD
 import one.digitalinnovation.personapi.PersonService;
 import one.digitalinnovation.personapi.dto.request.PersonDTO;
 import one.digitalinnovation.personapi.dto.response.MessageResponseDTO;
@@ -51,5 +52,18 @@ public class PersonController {
     @ResponseStatus( HttpStatus.CREATED )
     public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO person ){
         return personService.createPerson( person );
+=======
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+@RestController
+@RequestMapping("/api/v1/people")
+public class PersonController {
+
+    @GetMapping
+    public String getBook() {
+        return "API Test!";
+>>>>>>> ba063472e671336ffa8fb593d7e5bb938abfac50
     }
 }
