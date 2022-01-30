@@ -5,7 +5,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
@@ -17,24 +16,21 @@ import java.util.List;
 @NoArgsConstructor
 public class Person {
     @Id
-    @GeneratedValue( strategy = GenerationType.IDENTITY )
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column( nullable = false )
+    @Column(nullable = false)
     private String firstName;
 
-    @Column( nullable = false )
+    @Column(nullable = false)
     private String lastName;
 
-    @Column( nullable = false, unique = true )
+    @Column(nullable = false, unique = true)
     private String cpf;
 
     private LocalDate birthDate;
 
-<<<<<<< HEAD
-    @OneToMany( fetch = FetchType.LAZY, cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE } )
-=======
-    @OneToMany( fetch = FetchType.LAZY,cascade = { CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE } )
->>>>>>> ba063472e671336ffa8fb593d7e5bb938abfac50
+
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE})
     private List<Phone> phones;
 }

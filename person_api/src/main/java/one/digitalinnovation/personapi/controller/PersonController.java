@@ -1,12 +1,9 @@
 package one.digitalinnovation.personapi.controller;
 
-<<<<<<< HEAD
 import one.digitalinnovation.personapi.PersonService;
 import one.digitalinnovation.personapi.dto.request.PersonDTO;
 import one.digitalinnovation.personapi.dto.response.MessageResponseDTO;
-import one.digitalinnovation.personapi.entity.Person;
 import one.digitalinnovation.personapi.exceptions.PersonNotFoundException;
-import one.digitalinnovation.personapi.repository.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -23,47 +20,34 @@ public class PersonController {
 
 
     @Autowired
-    public PersonController( PersonService personService ){
+    public PersonController(PersonService personService) {
         this.personService = personService;
     }
 
     @GetMapping
-    public List<PersonDTO> listAll(  ){
+    public List<PersonDTO> listAll() {
         return personService.listAll();
     }
 
-    @GetMapping( "/{id}" )
-    public PersonDTO findById( @PathVariable Long id ) throws PersonNotFoundException {
-        return personService.findById( id );
+    @GetMapping("/{id}")
+    public PersonDTO findById(@PathVariable Long id) throws PersonNotFoundException {
+        return personService.findById(id);
     }
 
-    @DeleteMapping( "/{id}" )
+    @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteById( @PathVariable Long id ) throws PersonNotFoundException {
-        personService.deleteById( id );
+    public void deleteById(@PathVariable Long id) throws PersonNotFoundException {
+        personService.deleteById(id);
     }
 
-    @PutMapping( "/{id}" )
-    public MessageResponseDTO updateById( @PathVariable Long id, @RequestBody @Valid PersonDTO person ) throws PersonNotFoundException {
-        return personService.updateById( id, person );
+    @PutMapping("/{id}")
+    public MessageResponseDTO updateById(@PathVariable Long id, @RequestBody @Valid PersonDTO person) throws PersonNotFoundException {
+        return personService.updateById(id, person);
     }
 
     @PostMapping
-    @ResponseStatus( HttpStatus.CREATED )
-    public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO person ){
-        return personService.createPerson( person );
-=======
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-@RestController
-@RequestMapping("/api/v1/people")
-public class PersonController {
-
-    @GetMapping
-    public String getBook() {
-        return "API Test!";
->>>>>>> ba063472e671336ffa8fb593d7e5bb938abfac50
+    @ResponseStatus(HttpStatus.CREATED)
+    public MessageResponseDTO createPerson(@RequestBody @Valid PersonDTO person) {
+        return personService.createPerson(person);
     }
 }
